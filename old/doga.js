@@ -10,8 +10,8 @@
  *
  * This notice shall be included in all copies or substantial portions of the Software.
  *
- * build: 2015-10-08 17:43:45
- * version: 0.2.2
+ * build: 2015-10-08 17:43:32
+ * version: 0.2.1
  * url https://github.com/taikiken/doga.js
  */
 /**

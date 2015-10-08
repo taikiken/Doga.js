@@ -1,6 +1,6 @@
 {
   "name": "doga.js",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "【Gulp Task 開発環境構築】を行い環境構築後作業します",
   "devDependencies": {
     "apache-server-configs": "^2.7.1",

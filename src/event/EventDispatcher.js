@@ -170,7 +170,7 @@
 
       var
         listeners = this._listeners,
-        listeners_types,
+        listenersTypes,
         index;
 
       if ( typeof listeners === 'undefined') {
@@ -179,15 +179,15 @@
 
       }
 
-      listeners_types = listeners[ type ];
+      listenersTypes = listeners[ type ];
 
-      if ( typeof listeners_types !== 'undefined' ) {
+      if ( typeof listenersTypes !== 'undefined' ) {
 
-        index = listeners_types.indexOf( listener );
+        index = listenersTypes.indexOf( listener );
 
         if ( index !== -1 ) {
 
-          listeners_types.splice( index, 1 );
+          listenersTypes.splice( index, 1 );
 
         }
 
@@ -205,7 +205,7 @@
 
       var
         listeners = this._listeners,
-        listeners_types,
+        listenersTypes,
         listener,
         i, limit;
 
@@ -215,15 +215,15 @@
 
       }
 
-      listeners_types = listeners[ event.type ];
+      listenersTypes = listeners[ event.type ];
 
-      if ( typeof listeners_types !== 'undefined' ) {
+      if ( typeof listenersTypes !== 'undefined' ) {
 
         event.target = this;
 
-        for ( i = 0, limit = listeners_types.length; i < limit; i = ( i + 1 )|0 ) {
+        for ( i = 0, limit = listenersTypes.length; i < limit; i = ( i + 1 )|0 ) {
 
-          listener = listeners_types[ i ];
+          listener = listenersTypes[ i ];
 
           if ( !!listener ) {
 

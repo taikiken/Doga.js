@@ -10,7 +10,7 @@
  *
  * This notice shall be included in all copies or substantial portions of the Software.
  *
- * build: 2015-10-08 17:36:35
+ * build: 2015-10-08 17:43:32
  * version: 0.2.1
  * url https://github.com/taikiken/doga.js
  */
@@ -200,7 +200,7 @@ var Doga = window.Doga || {};
 
       var
         listeners = this._listeners,
-        listeners_types,
+        listenersTypes,
         index;
 
       if ( typeof listeners === 'undefined') {
@@ -209,15 +209,15 @@ var Doga = window.Doga || {};
 
       }
 
-      listeners_types = listeners[ type ];
+      listenersTypes = listeners[ type ];
 
-      if ( typeof listeners_types !== 'undefined' ) {
+      if ( typeof listenersTypes !== 'undefined' ) {
 
-        index = listeners_types.indexOf( listener );
+        index = listenersTypes.indexOf( listener );
 
         if ( index !== -1 ) {
 
-          listeners_types.splice( index, 1 );
+          listenersTypes.splice( index, 1 );
 
         }
 
@@ -235,7 +235,7 @@ var Doga = window.Doga || {};
 
       var
         listeners = this._listeners,
-        listeners_types,
+        listenersTypes,
         listener,
         i, limit;
 
@@ -245,15 +245,15 @@ var Doga = window.Doga || {};
 
       }
 
-      listeners_types = listeners[ event.type ];
+      listenersTypes = listeners[ event.type ];
 
-      if ( typeof listeners_types !== 'undefined' ) {
+      if ( typeof listenersTypes !== 'undefined' ) {
 
         event.target = this;
 
-        for ( i = 0, limit = listeners_types.length; i < limit; i = ( i + 1 )|0 ) {
+        for ( i = 0, limit = listenersTypes.length; i < limit; i = ( i + 1 )|0 ) {
 
-          listener = listeners_types[ i ];
+          listener = listenersTypes[ i ];
 
           if ( !!listener ) {
 
@@ -305,6 +305,7 @@ var Doga = window.Doga || {};
     return EventDispatcher;
   }() );
 }( window ) );
+
 ///**
 // * license inazumatv.com
 // * author (at)taikiken / http://inazumatv.com
