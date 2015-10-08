@@ -1,0 +1,11 @@
+{
+  "name": "Practice Video API",
+  "description": "The Practice VideoI is a HTML 5 Video Element.",
+  "url": "*",
+  "options": {
+    "linkNatives": "true",
+    "attributesEmit": "true",
+    "outdir": "./docs",
+    "paths": "./src"
+  }
+}

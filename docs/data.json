@@ -1,0 +1,892 @@
+{
+    "project": {
+        "name": "Practice Video API",
+        "description": "The Practice VideoI is a HTML 5 Video Element.",
+        "url": "*"
+    },
+    "files": {
+        "src/event/EventDispatcher.js": {
+            "name": "src/event/EventDispatcher.js",
+            "modules": {},
+            "classes": {
+                "EventDispatcher": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/ui/Cue.js": {
+            "name": "src/ui/Cue.js",
+            "modules": {},
+            "classes": {
+                "Cue": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/ui/Player.js": {
+            "name": "src/ui/Player.js",
+            "modules": {},
+            "classes": {
+                "Player": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/doga.js": {
+            "name": "src/doga.js",
+            "modules": {
+                "Doga": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "Doga": {
+            "name": "Doga",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "EventDispatcher": 1,
+                "Cue": 1,
+                "Player": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "src/ui/Player.js",
+            "line": 38,
+            "description": "## 動画(HTML 5 Video)コントロール\n依存ファイルはありません。\n### Support\nIE 9, IE 10, IE 11, Edge latest, Chrome latest, Safari latest, Firefox latest",
+            "type": "{Doga}"
+        }
+    },
+    "classes": {
+        "EventDispatcher": {
+            "name": "EventDispatcher",
+            "shortname": "EventDispatcher",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [
+                "Player"
+            ],
+            "module": "Doga",
+            "file": "src/event/EventDispatcher.js",
+            "line": 31,
+            "description": "### カスタム Event を管理します\n- 必要なClassでmixinします\n- mixin 後下記の6関数が使用できるようになります\n\n\n     addEventListener\n     hasEventListener\n     removeEventListener\n     dispatchEvent\n     on\n     off\n\n### mixin\n\n     function SomeClass () {}\n     // mixin\n     Gasane.EventDispatcher.initialize( SomeClass.prototype );",
+            "is_constructor": 1
+        },
+        "Cue": {
+            "name": "Cue",
+            "shortname": "Cue",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Doga",
+            "file": "src/ui/Cue.js",
+            "line": 26,
+            "description": "cue point を管理します",
+            "is_constructor": 1
+        },
+        "Player": {
+            "name": "Player",
+            "shortname": "Player",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "Doga",
+            "file": "src/ui/Player.js",
+            "line": 38,
+            "uses": [
+                "EventDispatcher"
+            ],
+            "params": [
+                {
+                    "name": "id",
+                    "description": "video tag id, #無し",
+                    "type": "String"
+                },
+                {
+                    "name": "cue",
+                    "description": "Cue instance",
+                    "type": "Cue",
+                    "optional": true
+                }
+            ],
+            "is_constructor": 1
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "src/event/EventDispatcher.js",
+            "line": 2,
+            "type": "{EventDispatcher}\n\n## カスタム Event を管理します\n\n1. 必要なClassでmixinします\n2. mixin 後下記の6関数が使用できるようになります\n\n\n     addEventListener\n     hasEventListener\n     removeEventListener\n     dispatchEvent\n     on\n     off\n\n     function SomeClass () {}\n     // mixin\n     Gasane.EventDispatcher.initialize( SomeClass.prototype );\n\n\nGasane.EventDispatcher からコピー",
+            "class": "EventDispatcher"
+        },
+        {
+            "file": "src/event/EventDispatcher.js",
+            "line": 58,
+            "description": "イベントにハンドラを登録します\n\nハンドラ内のthisはイベント発生元になるので注意が必要です\n\nthis参照を変えないために bind を使用する方法があります\n\n     function EventReceive () {\n         var example = new ExampleClass();\n\n         example.addEventListener( \"other\", onOtherHandler );\n         example.addEventListener( \"example\", this.onBoundHandler.bind( this ) );\n     }\n\n     EventReceive.prototype.onOtherHandler ( event ) {\n         console.log( this );// ExampleClass\n     }\n\n     EventReceive.prototype.onBoundHandler ( event ) {\n         console.log( this );// EventReceive\n     }",
+            "itemtype": "method",
+            "name": "addEventListener",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "event type",
+                    "type": "String"
+                },
+                {
+                    "name": "listener",
+                    "description": "event handler",
+                    "type": "Function"
+                }
+            ],
+            "class": "EventDispatcher"
+        },
+        {
+            "file": "src/event/EventDispatcher.js",
+            "line": 89,
+            "description": "addEventListener alias",
+            "itemtype": "method",
+            "name": "on",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "event type",
+                    "type": "String"
+                },
+                {
+                    "name": "listener",
+                    "description": "event handler",
+                    "type": "Function"
+                }
+            ],
+            "class": "EventDispatcher"
+        },
+        {
+            "file": "src/event/EventDispatcher.js",
+            "line": 125,
+            "itemtype": "method",
+            "name": "hasEventListener",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "event type",
+                    "type": "String"
+                },
+                {
+                    "name": "listener",
+                    "description": "event handler",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "event type へ listener 登録が有るか無いかの真偽値を返します",
+                "type": "Boolean"
+            },
+            "class": "EventDispatcher"
+        },
+        {
+            "file": "src/event/EventDispatcher.js",
+            "line": 149,
+            "description": "event type から listener を削除します\n\nメモリーリークの原因になるので不要になったlistenerは必ずremoveEventListenerを実行します",
+            "itemtype": "method",
+            "name": "removeEventListener",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "event type",
+                    "type": "String"
+                },
+                {
+                    "name": "listener",
+                    "description": "event handler",
+                    "type": "Function"
+                }
+            ],
+            "class": "EventDispatcher"
+        },
+        {
+            "file": "src/event/EventDispatcher.js",
+            "line": 163,
+            "description": "removeEventListener alias",
+            "itemtype": "method",
+            "name": "off",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "event type",
+                    "type": "String"
+                },
+                {
+                    "name": "listener",
+                    "description": "event handler",
+                    "type": "Function"
+                }
+            ],
+            "class": "EventDispatcher"
+        },
+        {
+            "file": "src/event/EventDispatcher.js",
+            "line": 198,
+            "description": "event発生をlistenerに通知します",
+            "itemtype": "method",
+            "name": "dispatchEvent",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "require event.type:String, { type: 'some_event', [] }",
+                    "type": "Object"
+                }
+            ],
+            "class": "EventDispatcher"
+        },
+        {
+            "file": "src/event/EventDispatcher.js",
+            "line": 239,
+            "description": "## EventDispatcher mixin\n\n6関数を引数(object)へ追加します\n\n- addEventListener\n- hasEventListener\n- removeEventListener\n- dispatchEvent\n- on\n- off\n\n\n     function SomeClass () {}\n     // mixin\n     Gasane.EventDispatcher.initialize( SomeClass.prototype );\n\n     var someObject = {};\n     // mixin\n     Gasane.EventDispatcher.initialize( someObject );",
+            "itemtype": "method",
+            "name": "initialize",
+            "params": [
+                {
+                    "name": "object",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "static": 1,
+            "class": "EventDispatcher"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 15,
+            "description": "cue point helper",
+            "type": "{Cue}",
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 33,
+            "itemtype": "property",
+            "name": "points",
+            "type": "{Array}",
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 46,
+            "description": "cue point start ~ end 範囲を計算します\n\ncue point event 発行に必要なので必ず実行してください",
+            "itemtype": "method",
+            "name": "init",
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 98,
+            "description": "cue point fired option を false へ",
+            "itemtype": "method",
+            "name": "reset",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 124,
+            "description": "cue point fired option を 全て false へ",
+            "itemtype": "method",
+            "name": "resetAll",
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 134,
+            "itemtype": "method",
+            "name": "resetUnder",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 165,
+            "description": "cue point 未達で event 発行可能かを判定します",
+            "itemtype": "method",
+            "name": "canFire",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "cue point time",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "event 発行可能な場合 true を返します",
+                "type": "Boolean"
+            },
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 187,
+            "description": "cue point event 発行済みをマークします",
+            "itemtype": "method",
+            "name": "fired",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "cue point time",
+                    "type": "Number"
+                }
+            ],
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 198,
+            "description": "video current time が cue point event 発行可能エリアにいるかを判定します",
+            "itemtype": "method",
+            "name": "insect",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "video current time",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "{{start: number, end:number, fire: boolean}}",
+                "type": "*|undefined"
+            },
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 242,
+            "itemtype": "method",
+            "name": "length",
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 251,
+            "itemtype": "method",
+            "name": "index",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "",
+                    "type": "Number|String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 263,
+            "itemtype": "method",
+            "name": "has",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "",
+                    "type": "Number|String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 273,
+            "itemtype": "method",
+            "name": "range",
+            "params": [
+                {
+                    "name": "start",
+                    "description": "",
+                    "type": "Number"
+                },
+                {
+                    "name": "end",
+                    "description": "",
+                    "type": "Number=Number.MAX_VALUE",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 304,
+            "itemtype": "method",
+            "name": "add",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "",
+                    "type": "Number|String"
+                }
+            ],
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 320,
+            "itemtype": "method",
+            "name": "remove",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "",
+                    "type": "Number|String"
+                }
+            ],
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 339,
+            "itemtype": "method",
+            "name": "sort",
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 351,
+            "itemtype": "method",
+            "name": "next",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number|null"
+            },
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 376,
+            "itemtype": "method",
+            "name": "nextByTime",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number|null"
+            },
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 387,
+            "itemtype": "method",
+            "name": "distance",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "}",
+                "type": "Start: number, end: number"
+            },
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 423,
+            "itemtype": "method",
+            "name": "prev",
+            "params": [
+                {
+                    "name": "index",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number|null"
+            },
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Cue.js",
+            "line": 448,
+            "itemtype": "method",
+            "name": "prevByTime",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number|null"
+            },
+            "class": "Cue"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 14,
+            "description": "参考 OSMF.MediaPlayer\n\nhttp://help.adobe.com/ja_JP/FlashPlatform/reference/actionscript/3/org/osmf/media/MediaPlayer.htm\n\nHTML Audio and Video DOM Reference\n\nhttp://www.w3schools.com/tags/ref_av_dom.asp",
+            "type": "{Player}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 47,
+            "description": "video tag element",
+            "itemtype": "property",
+            "name": "video",
+            "type": "{Element}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 53,
+            "itemtype": "property",
+            "name": "playing",
+            "type": "{boolean}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 58,
+            "itemtype": "property",
+            "name": "loaded",
+            "type": "{boolean}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 63,
+            "itemtype": "property",
+            "name": "currentTime",
+            "type": "{number}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 68,
+            "itemtype": "property",
+            "name": "duration",
+            "type": "{number}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 73,
+            "itemtype": "property",
+            "name": "boundUpdate",
+            "type": "{function(this:Player)}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 78,
+            "itemtype": "property",
+            "name": "cue",
+            "type": "{undefined|null|Cue}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 83,
+            "itemtype": "property",
+            "name": "boundLoad",
+            "type": "{function(this:Player)}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 88,
+            "itemtype": "property",
+            "name": "boundEnded",
+            "type": "{function(this:Player)|*}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 96,
+            "itemtype": "event",
+            "name": "LOADED",
+            "static": 1,
+            "type": "{string}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 102,
+            "itemtype": "event",
+            "name": "UPDATE",
+            "static": 1,
+            "type": "{string}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 108,
+            "itemtype": "event",
+            "name": "PLAY",
+            "static": 1,
+            "type": "{string}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 114,
+            "itemtype": "event",
+            "name": "STOP",
+            "static": 1,
+            "type": "{string}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 120,
+            "itemtype": "event",
+            "name": "END",
+            "static": 1,
+            "type": "{string}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 126,
+            "itemtype": "event",
+            "name": "CUE_POINT",
+            "static": 1,
+            "type": "{string}",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 138,
+            "description": "初期処理, Cue.init を実行し cue point data を準備します\n\nPlayer instance 作成後必ず実行してください",
+            "itemtype": "method",
+            "name": "init",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 165,
+            "description": "video.onloadeddata event handler",
+            "itemtype": "method",
+            "name": "onLoad",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "video.loadeddata",
+                    "type": "Event"
+                }
+            ],
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 183,
+            "description": "video.onended event handler",
+            "itemtype": "method",
+            "name": "onEnded",
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 194,
+            "itemtype": "method",
+            "name": "update",
+            "params": [
+                {
+                    "name": "event",
+                    "description": "",
+                    "type": "Event"
+                }
+            ],
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 226,
+            "itemtype": "method",
+            "name": "watch",
+            "return": {
+                "description": "",
+                "type": "Player"
+            },
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 238,
+            "itemtype": "method",
+            "name": "unwatch",
+            "return": {
+                "description": "",
+                "type": "Player"
+            },
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 250,
+            "itemtype": "method",
+            "name": "element",
+            "return": {
+                "description": "",
+                "type": "Element|*"
+            },
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 260,
+            "itemtype": "method",
+            "name": "canSeekTo",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Boolean"
+            },
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 280,
+            "itemtype": "method",
+            "name": "stop",
+            "return": {
+                "description": "",
+                "type": "Player"
+            },
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 300,
+            "itemtype": "method",
+            "name": "pause",
+            "return": {
+                "description": "",
+                "type": "Player"
+            },
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 320,
+            "itemtype": "method",
+            "name": "play",
+            "return": {
+                "description": "",
+                "type": "Player"
+            },
+            "class": "Player"
+        },
+        {
+            "file": "src/ui/Player.js",
+            "line": 340,
+            "itemtype": "method",
+            "name": "seek",
+            "params": [
+                {
+                    "name": "time",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Player"
+            },
+            "class": "Player"
+        },
+        {
+            "file": "src/doga.js",
+            "line": 1,
+            "license": "inazumatv.com",
+            "author": "(at)taikiken / http://inazumatv.com",
+            "date": "15/09/18 - 19:37\n\nCopyright (c) 2011-2015 inazumatv.com, inc.\n\nDistributed under the terms of the MIT license.\nhttp://www.opensource.org/licenses/mit-license.html\n\nThis notice shall be included in all copies or substantial portions of the Software.\n\nbuild: @@buildTime\nversion: @@version\nurl @@repository",
+            "class": ""
+        }
+    ],
+    "warnings": [
+        {
+            "message": "unknown tag: license",
+            "line": " src/doga.js:1"
+        },
+        {
+            "message": "unknown tag: date",
+            "line": " src/doga.js:1"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/event/EventDispatcher.js:2"
+        },
+        {
+            "message": "Missing item type\ncue point helper",
+            "line": " src/ui/Cue.js:15"
+        },
+        {
+            "message": "Missing item type\n参考 OSMF.MediaPlayer\n\nhttp://help.adobe.com/ja_JP/FlashPlatform/reference/actionscript/3/org/osmf/media/MediaPlayer.htm\n\nHTML Audio and Video DOM Reference\n\nhttp://www.w3schools.com/tags/ref_av_dom.asp",
+            "line": " src/ui/Player.js:14"
+        },
+        {
+            "message": "Missing item type",
+            "line": " src/doga.js:1"
+        }
+    ]
+}
